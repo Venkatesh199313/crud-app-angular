@@ -1,0 +1,32 @@
+<div class="modal-header">
+    <h4 class="modal-title">Custom Dialog Title</h4>
+    
+  </div>
+  <div class="modal-body">
+    
+    <div class="id">
+        <label for="id">Id</label>
+        <input type="number" class="form-control" id="id"
+            required
+            [(ngModel)]="model.id" name="id">
+    </div>
+
+    <div class="name">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name"
+            required
+            [(ngModel)]="model.name" name="name">
+    </div>
+
+    <div class="salary">
+        <label for="salary">Salary</label>
+        <input type="number" class="form-control" id="salary"
+            required
+            [(ngModel)]="model.salary" name="salary">
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="editItem(model); closeModal()">Update</button>
+  </div>
+  

@@ -1,0 +1,90 @@
+
+<p>Employee with high pay grade</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">name</th>
+        <th scope="col">salary</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let data of salaryDataForChild ">
+      <tr *ngIf="data.salary >= 10000">
+        <td >{{data.id}}</td>
+        <td >{{data.name}}</td>
+        <td >{{data.salary}}</td>
+        <td>
+            <button type="button" class="btn btn-primary" (click)="openDialog(data)">
+                Edit
+              </button>
+        </td>
+        <td >
+            <button (click)="deleteItem(data)" type="button" class="btn btn-primary">
+                Delete
+              </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+<br />
+
+<p>Employee with low pay grade</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">name</th>
+        <th scope="col">salary</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let data of salaryDataForChild ">
+      <tr *ngIf="data.salary < 10000">
+        <td >{{data.id}}</td>
+        <td >{{data.name}}</td>
+        <td >{{data.salary}}</td>
+        <td>
+            <button type="button" class="btn btn-primary" (click)="openDialog(data)">
+                Edit
+              </button>
+        </td>
+        <td >
+            <button (click)="deleteItem(data)" type="button" class="btn btn-primary">
+                Delete
+              </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Modal -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit employee details</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <label>Id</label><input><br />
+          <label>Name</label><input><br />
+          <label>Salary</label><input>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary save" >Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    $(document).on("click", ".open-AddBookDialog", function () {
+     var myBookId = $(this).data('id');
+     $(".modal-body #bookId").val( myBookId );
+     // As pointed out in comments, 
+     // it is unnecessary to have to manually call the modal.
+     // $('#addBookDialog').modal('show');
+});
+  </script> -->
+  

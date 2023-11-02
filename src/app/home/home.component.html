@@ -1,0 +1,38 @@
+
+
+<form class="form-group" style="width: 500px; height: 500px;margin-left: 200px; margin-top: 50px;">
+    <span>Total Number of Employee with Low pay grade: {{statisticData.lowData}}</span><br />
+    <span>Total Number of Employee with high pay grade: {{statisticData.highData}}</span>
+    <br /><br />
+    <div class="id">
+        <label for="id">Id</label>
+        <input type="number" class="form-control" id="id"
+            required
+            [(ngModel)]="model.id" name="id">
+    </div>
+
+    <div class="name">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name"
+            required
+            [(ngModel)]="model.name" name="name">
+    </div>
+
+    <div class="salary">
+        <label for="salary">Salary</label>
+        <input type="number" class="form-control" id="salary"
+            required
+            [(ngModel)]="model.salary" name="salary">
+    </div>
+
+    <br/>
+
+    <button type="button" (click)="updateTable()" class="btn btn-primary">Submit</button>
+
+    <br/> <br/>
+
+    <app-child (myOutput) ="getChildData($event)"></app-child>
+    
+  </form>
+
+ 
