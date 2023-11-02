@@ -17,16 +17,25 @@ export class AppService {
     this.appSubject.next(message);
   }
 
+  // GET METHOD (Promise)
   apiPromisified() {
     return this.http.get(`${environment.apiUrl}/employees`).toPromise();
   }
 
+  //POST METHOD (Observable)
   postApiAsObservable(params:any) : Observable<any> {
     return this.http.post(`${environment.apiUrl}/employees`, params);
   }
-}
 
-// this.appService.apiAsObservable().subscribe(data => {
-    //   console.log(data);
-    //   this.salaryDataForParent = data;
-    // });
+  // PUT METHOD
+  putApiAsObservable(data : any) {
+    return this.http.put(`${environment.apiUrl}/employees/${data.id}`, data);
+  }
+
+  // DELETE METHOD
+  deleteApiAsObservable(data : any) {
+    return this.http.delete(`${environment.apiUrl}/employees/${data.id}`);
+  }
+
+
+}

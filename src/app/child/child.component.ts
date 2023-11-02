@@ -36,37 +36,36 @@ export class ChildComponent {
         })
       }
     })
-    
+
   }
 
+  // for total number of Employee count
   conditionForHigh = (element: any) => element.salary >= 10000;
   conditionForLow = (element: any) => element.salary < 10000;
 
 
   populateTableData() {
+    // using the Injected service
     this.appService.apiPromisified().then((api) => {
       console.log(api);
       this.salaryDataForChild = api;
-      console.log('calculate total number', this.salaryDataForChild);
       
+      // updating the data count
       this.filteredLenghtForLow = this.salaryDataForChild.filter(this.conditionForLow);
       this.filteredLenghtForHigh = this.salaryDataForChild.filter(this.conditionForHigh);
       this.myOutput.emit({ lowData: this.filteredLenghtForLow.length, highData: this.filteredLenghtForHigh.length});  
     });
   }
 
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   console.log('change', changes);
-  // }
-
+  //PUT operation
   editItem(data: any) {
-    this.http.put(`${environment.apiUrl}/employees/${data.id}`, data).subscribe(data => {
+    this.appService.putApiAsObservable(data).subscribe(data => {
       console.log(data);
-      // alert("<input></input>");
       this.populateTableData();
     });
   }
 
+  //for PUT operation
   openDialog(data: any) {
     const modalRef = this.modalService.open(DialogComponent);
     modalRef.componentInstance.data = data;
@@ -77,8 +76,9 @@ export class ChildComponent {
     this.dataToUpdate = data;
   }
 
+  // DELETE operation 
   deleteItem(data: any) {
-    this.http.delete(`${environment.apiUrl}/employees/${data.id}`).subscribe(data => {
+    this.appService.deleteApiAsObservable(data).subscribe(data => {
       console.log(data);
       this.populateTableData();
     });
